@@ -1,0 +1,66 @@
+@import "../../node_modules/bootstrap/less/bootstrap.less";
+
+body {
+  padding-bottom: 50px;
+}
+
+.instanceInfo {
+  border-bottom: solid 1px @gray;
+
+  &:first-child {
+    border-top: solid 1px @gray;
+  }
+
+  &.running {
+  }
+
+  &.stopped {
+    color: @gray-light;
+    background-color: #eee;
+
+    a, a:visited {
+      color: @gray-light;
+    }
+  }
+
+  .instanceName {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 3px;
+  }
+
+  button {
+    margin: 3px 0 3px 0;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 10px;
+  }
+
+  .instanceDetails {
+    display: none;
+
+    &.expanded {
+      display: block;
+    }
+  }
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid orange;
+  border-top: solid 3px blue;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  display: inline-block;
+  margin: 3px 0 3px 0;
+  position: relative;
+  top: 8px;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}

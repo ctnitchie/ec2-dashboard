@@ -1,0 +1,8 @@
+/dist
+node_modules
+.DS_Store
+/www/scripts
+/www/stylesheets/*.css*
+/www/fonts
+npm-debug.log
+/.awsrc-dev
