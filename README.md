@@ -21,3 +21,10 @@ To install
 
 5. Launch the application with `npm run serve`.
 6. Navigate to http://localhost:3000 to manage your instances.
+
+If you want to run with a different `.awsrc` file, set the `AWS_CONFIG`
+environment variable to the file location.
+
+To run in sandbox mode, copy `.awsrc` to `.awsrc-dev` and run `npm start`. This
+will watch for changes in the code and recompile on-the-fly. The `.awsrc-dev`
+file is ignored by git.
