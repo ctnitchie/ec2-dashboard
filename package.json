@@ -1,8 +1,12 @@
 {
   "name": "ec2console",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A web UI for listing, starting, and stopping AWS EC2 instances.",
   "main": "dist/app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ctnitchie/ec2-dashboard"
+  },
   "scripts": {
     "start": "AWS_CONFIG=.awsrc-dev nodemon server/server.js --exec babel-node & webpack --progress --colors --watch & autoless www/stylesheets; copyfiles -u 2 node_modules/bootstrap/fonts/* www",
     "prepublish": "babel server -d dist; webpack --progress --colors; lessc --source-map --verbose www/stylesheets/style.less www/stylesheets/style.css; copyfiles -u 2 server/views/* dist/views; copyfiles -u 2 node_modules/bootstrap/fonts/* www",
