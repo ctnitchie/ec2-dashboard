@@ -1,2 +1,7 @@
 <div id="app"></div>
+{{#if appPath}}
+<script>
+window.ec2AppPath = "{{appPath}}";
+</script>
+{{/if}}
 <script src="{{appPath}}/scripts/app.js" type="text/javascript"></script>

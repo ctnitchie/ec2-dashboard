@@ -2,7 +2,7 @@ import io from 'socket.io-client';
 import * as rpc from 'lwrpc/client';
 import {EventEmitter} from 'events';
 
-export const socket = io();
+export const socket = io({path: window.ec2AppPath});
 export const socketClient = rpc.SocketClient(socket);
 export const ec2Service = rpc.Proxy(socketClient, 'aws', [
   'listInstances',
