@@ -12,7 +12,14 @@ function getConfig() {
 
 function getFilters() {
   if (process.env.AWS_EC2_FILTERS) {
-    return JSON.parse(fs.readFileSync(process.env.AWS_EC2_FILTERS, 'UTF-8'));
+    try {
+      return JSON.parse(fs.readFileSync(process.env.AWS_EC2_FILTERS, 'UTF-8'));
+
+    } catch (e) {
+      console.log("Error loading filter file \"" + process.env.AWS_EC2_FILTERS + "\"");
+      console.log(e);
+      return [];
+    }
   } else {
     return [];
   }
