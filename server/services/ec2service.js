@@ -3,10 +3,19 @@ import AWS from 'aws-sdk';
 import EventEmitter from 'events';
 
 const ec2 = new AWS.EC2(getConfig());
+const FILTERS = getFilters();
 
 function getConfig() {
   let file = process.env.AWS_CONFIG || '.awsrc';
   return JSON.parse(fs.readFileSync(file, 'UTF-8'));
+}
+
+function getFilters() {
+  if (process.env.AWS_EC2_FILTERS) {
+    return JSON.parse(fs.readFileSync(process.env.AWS_EC2_FILTERS, 'UTF-8'));
+  } else {
+    return [];
+  }
 }
 
 function simplifyEc2Info(instance) {
@@ -66,12 +75,14 @@ const methods = {
   listInstances(ids = []) {
     return new Promise((resolve, reject) => {
       let req = {};
-      if (ids.length) {
+      if (ids && ids.length) {
         req.InstanceIds = ids;
+      } else if (FILTERS && FILTERS.length) {
+        req.Filters = FILTERS;
       } else {
         req.MaxResults = 1000;
       }
-      ec2.describeInstances(ids, (err, data) => {
+      ec2.describeInstances(req, (err, data) => {
         if (err) return reject(err);
         // Massage the verbose data returned from EC2.
         let response = [];
