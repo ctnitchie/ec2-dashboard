@@ -43,3 +43,7 @@ For example:
     ]
 
 This filter will only show instances tagged with `anonymousStartStop=true`.
+
+If running the application at some URL path behind a proxy, you can use the
+`EC2_DASHBOARD_APP_PATH` environment variable to cause references in rendered
+HTML pages to use that path for all references.

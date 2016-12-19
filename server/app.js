@@ -25,6 +25,8 @@ app.use(cookieParser());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, '../www')));
 
+app.locals.appPath = process.env.EC2_DASHBOARD_APP_PATH || '';
+
 initRoutes(app);
 
 // catch 404 and forward to error handler
