@@ -31,7 +31,8 @@ file is ignored by git.
 
 To apply filters to the visible instances, set the `AWS_EC2_FILTERS` environment
 variable to a file containing a JSON array of filters, as described in the
-`Filters` option on the AWS (describeInstances method)[http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#describeInstances-property].
+`Filters` option on the AWS [describeInstances method]
+(http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#describeInstances-property).
 For example:
 
     [
